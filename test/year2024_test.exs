@@ -15,4 +15,11 @@ defmodule Year2024Test do
     assert Year2024Day2.part1(input) == 2
     assert Year2024Day2.part2(input) == 4
   end
+
+  test "2024 Day 3" do
+    input = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+    assert Year2024Day3.parse(input) == [{:mul, 2, 4}, :dont, {:mul, 5, 5}, {:mul, 11, 8}, :do, {:mul, 8, 5}]
+    assert Year2024Day3.part1(input) == 161
+    assert Year2024Day3.part2(input) == 48
+  end
 end

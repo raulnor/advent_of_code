@@ -16,14 +16,21 @@ defmodule AdventOfCode do
     :world
   end
 
-  def run do
-    input = File.read!("input/2024day1.txt")
-    IO.puts("====== 2024 Day 1 ======")
-    IO.puts("Part 1: #{Year2024Day1.part1(input)}")
-    IO.puts("Part 2: #{Year2024Day1.part2(input)}")
-    input = File.read!("input/2024day2.txt")
-    IO.puts("====== 2024 Day 2 ======")
-    IO.puts("Part 1: #{Year2024Day2.part1(input)}")
-    IO.puts("Part 2: #{Year2024Day2.part2(input)}")
+  def run(year, day) do
+    input = File.read!("input/#{year}day#{day}.txt")
+    module = Module.concat([String.to_atom("Year#{year}Day#{day}")])
+    f1 = String.to_atom("part1")
+    f2 = String.to_atom("part2")
+    {t1, r1} = :timer.tc(fn -> apply(module, f1, [input]) end)
+    {t2, r2} = :timer.tc(fn -> apply(module, f2, [input]) end)
+    IO.puts("====== #{year} Day #{day} ======")
+    IO.puts("Part 1: #{r1} (#{t1} µs)")
+    IO.puts("Part 2: #{r2} (#{t2} µs)")
+  end
+
+  def run_all do
+    run(2024, 1)
+    run(2024, 2)
+    run(2024, 3)
   end
 end
