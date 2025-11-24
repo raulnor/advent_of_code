@@ -21,5 +21,9 @@ defmodule AdventOfCode do
     IO.puts("====== 2024 Day 1 ======")
     IO.puts("Part 1: #{Year2024Day1.part1(input)}")
     IO.puts("Part 2: #{Year2024Day1.part2(input)}")
+    input = File.read!("input/2024day2.txt")
+    IO.puts("====== 2024 Day 2 ======")
+    IO.puts("Part 1: #{Year2024Day2.part1(input)}")
+    IO.puts("Part 2: #{Year2024Day2.part2(input)}")
   end
 end
