@@ -16,9 +16,12 @@ defmodule Mix.Tasks.Aoc.Fetch do
   def fetch(year, day) do
     {:ok, _} = Application.ensure_all_started(:httpoison)
 
-    session = System.get_env("AOC_SESSION") ||
-      raise "Set AOC_SESSION environment variable"
+    session =
+      System.get_env("AOC_SESSION") ||
+        raise "Set AOC_SESSION environment variable"
+
     url = "https://adventofcode.com/#{year}/day/#{day}/input"
+
     headers = [
       {"User-Agent", "Elixir AoC Fetcher"},
       {"Cookie", "session=#{session}"}

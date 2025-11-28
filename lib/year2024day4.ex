@@ -99,11 +99,10 @@ defmodule Year2024Day4 do
         {row, col}
       end)
     end)
-    |> Enum.filter(fn {x, y} ->
+    |> Enum.count(fn {x, y} ->
       Enum.any?(patterns, fn pattern ->
         match(data, x, y, pattern)
       end)
     end)
-    |> Enum.count()
   end
 end
