@@ -20,7 +20,7 @@ defmodule Year2024Day3 do
     end)
   end
 
-  defp solve_part1(data) do
+  def solve_part1(data) do
     data
     |> Enum.map(fn instruction ->
       case instruction do
@@ -31,7 +31,7 @@ defmodule Year2024Day3 do
     |> Enum.sum()
   end
 
-  defp solve_part2(data) do
+  def solve_part2(data) do
     {_toggle, result} =
       data
       |> Enum.reduce({true, 0}, fn instruction, {enabled, sum} ->

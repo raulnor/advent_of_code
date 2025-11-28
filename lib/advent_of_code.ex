@@ -1,40 +1,37 @@
 defmodule AdventOfCode do
-  @moduledoc """
-  Documentation for `AdventOfCode`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AdventOfCode.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
   def run(year, day) do
-    input = File.read!("input/#{year}day#{day}.txt")
     module = Module.concat([String.to_atom("Year#{year}Day#{day}")])
-    f0 = String.to_atom("parse")
-    f1 = String.to_atom("part1")
-    f2 = String.to_atom("part2")
-    {t0, _} = :timer.tc(fn -> apply(module, f0, [input]) end)
-    {t1, r1} = :timer.tc(fn -> apply(module, f1, [input]) end)
-    {t2, r2} = :timer.tc(fn -> apply(module, f2, [input]) end)
-    IO.puts("====== #{year} Day #{day} ======")
-    IO.puts("Parse: #{t0} µs")
-    IO.puts("Part 1: #{r1} (#{t1} µs)")
-    IO.puts("Part 2: #{r2} (#{t2} µs)")
+
+    with true <- Code.ensure_loaded?(module),
+         true <- function_exported?(module, :parse, 1),
+         true <- function_exported?(module, :solve_part1, 1),
+         true <- function_exported?(module, :solve_part2, 1) do
+      input = File.read!("input/#{year}day#{day}.txt")
+
+      {t0, data} = :timer.tc(fn -> module.parse(input) end)
+      {t1, r1} = :timer.tc(fn -> module.solve_part1(data) end)
+      {t2, r2} = :timer.tc(fn -> module.solve_part2(data) end)
+
+      IO.puts("====== #{year} Day #{day} ======")
+      IO.puts("Parse: #{t0} µs")
+      IO.puts("Part 1: #{r1} (#{t1} µs)")
+      IO.puts("Part 2: #{r2} (#{t2} µs)")
+      {:ok, t0 + t1 + t2}
+    else
+      false -> {:not_found, 0}
+    end
   end
 
-  def run_all do
-    run(2024, 1)
-    run(2024, 2)
-    run(2024, 3)
-    run(2024, 4)
+  def run(year) do
+    time = 1..25 |> Enum.map(fn day ->
+      {_, time} = run(year, day)
+      time
+    end)
+    |> Enum.sum()
+    IO.puts("*** #{year} total time: #{time} µs")
+  end
+
+  def run() do
+    2024..2025 |> Enum.map(fn year -> run(year) end)
   end
 end

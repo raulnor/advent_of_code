@@ -28,11 +28,11 @@ defmodule Mix.Tasks.Aoc.New do
         |> String.split("\\n")
       end
 
-      defp solve_part1(data) do
+      def solve_part1(data) do
         0
       end
 
-      defp solve_part2(data) do
+      def solve_part2(data) do
         0
       end
     end

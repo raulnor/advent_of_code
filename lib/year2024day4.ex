@@ -25,7 +25,7 @@ defmodule Year2024Day4 do
     end
   end
 
-  defp solve_part1(data) do
+  def solve_part1(data) do
     rows = tuple_size(data)
     cols = tuple_size(elem(data, 0))
     {n, e, w, s} = {-1, 1, -1, 1}
@@ -68,7 +68,7 @@ defmodule Year2024Day4 do
     end)
   end
 
-  defp solve_part2(data) do
+  def solve_part2(data) do
     rows = tuple_size(data)
     cols = tuple_size(elem(data, 0))
     patterns = [

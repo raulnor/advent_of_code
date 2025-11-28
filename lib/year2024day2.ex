@@ -13,7 +13,7 @@ defmodule Year2024Day2 do
     |> Enum.map(fn line -> line |> String.split() |> Enum.map(&String.to_integer/1) end)
   end
 
-  defp safe_level?(report) do
+  def safe_level?(report) do
     chunks = report |> Enum.chunk_every(2, 1, :discard)
 
     all_increasing = Enum.all?(chunks, fn [a, b] -> a < b end)
@@ -23,11 +23,11 @@ defmodule Year2024Day2 do
     (all_increasing or all_decreasing) and safe_differences
   end
 
-  defp solve_part1(reports) do
+  def solve_part1(reports) do
     reports |> Enum.count(&safe_level?/1)
   end
 
-  defp solve_part2(reports) do
+  def solve_part2(reports) do
     reports
     |> Enum.count(fn report ->
       if safe_level?(report) do

@@ -15,13 +15,13 @@ defmodule Year2024Day1 do
     end)
   end
 
-  defp solve_part1({left, right}) do
+  def solve_part1({left, right}) do
     Enum.zip(left |> Enum.sort(), right |> Enum.sort())
     |> Enum.map(fn {left, right} -> if left > right, do: left - right, else: right - left end)
     |> Enum.sum()
   end
 
-  defp solve_part2({left, right}) do
+  def solve_part2({left, right}) do
     frequencies = Enum.frequencies(right)
 
     left
