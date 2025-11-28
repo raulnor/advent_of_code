@@ -8,12 +8,11 @@ defmodule Year2024Day1 do
   end
 
   def parse(input) do
-    input
-    |> String.split("\n")
-    |> Enum.filter(fn line -> line != "" end)
-    |> Enum.map(fn line -> line |> String.split() |> Enum.map(&String.to_integer/1) end)
-    |> Enum.map(fn [left, right] -> {left, right} end)
-    |> Enum.unzip()
+    ~r/(\d+)\s+(\d+)/
+    |> Regex.scan(input)
+    |> Enum.reduce({[], []}, fn [_, l, r], {lefts, rights} ->
+      {[String.to_integer(l) | lefts], [String.to_integer(r) | rights]}
+    end)
   end
 
   defp solve_part1({left, right}) do
@@ -23,8 +22,10 @@ defmodule Year2024Day1 do
   end
 
   defp solve_part2({left, right}) do
+    frequencies = Enum.frequencies(right)
+
     left
-    |> Enum.map(fn lhs -> lhs * Enum.count(right, fn rhs -> lhs == rhs end) end)
+    |> Enum.map(fn lhs -> lhs * Map.get(frequencies, lhs, 0) end)
     |> Enum.sum()
   end
 end
