@@ -22,4 +22,16 @@ defmodule Year2024Test do
     assert Year2024Day3.part1(input) == 161
     assert Year2024Day3.part2(input) == 48
   end
+
+  test "2024 Day 4" do
+    input1 = "..X...\n.SAMX.\n.A..A.\nXMAS.S\n.X...."
+    assert Year2024Day4.parse(input1) == {{46, 46, 88, 46, 46, 46}, {46, 83, 65, 77, 88, 46}, {46, 65, 46, 46, 65, 46}, {88, 77, 65, 83, 46, 83}, {46, 88, 46, 46, 46, 46}}
+    assert Year2024Day4.part1(input1) == 4
+    input2 = "MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX"
+    assert Year2024Day4.part1(input2) == 18
+    input3 = "M.S\n.A.\nM.S"
+    assert Year2024Day4.part2(input3) == 1
+    input4 = ".M.S......\n..A..MSMS.\n.M.S.MAA..\n..A.ASMSM.\n.M.S.M....\n..........\nS.S.S.S.S.\n.A.A.A.A..\nM.M.M.M.M.\n.........."
+    assert Year2024Day4.part2(input4) == 9
+  end
 end

@@ -10,6 +10,7 @@ defmodule Year2024Day1 do
   def parse(input) do
     input
     |> String.split("\n")
+    |> Enum.filter(fn line -> line != "" end)
     |> Enum.map(fn line -> line |> String.split() |> Enum.map(&String.to_integer/1) end)
     |> Enum.map(fn [left, right] -> {left, right} end)
     |> Enum.unzip()

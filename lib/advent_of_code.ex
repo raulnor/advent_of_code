@@ -32,5 +32,6 @@ defmodule AdventOfCode do
     run(2024, 1)
     run(2024, 2)
     run(2024, 3)
+    run(2024, 4)
   end
 end

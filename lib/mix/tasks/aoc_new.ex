@@ -29,11 +29,11 @@ defmodule Mix.Tasks.Aoc.New do
       end
 
       defp solve_part1(data) do
-        data
+        0
       end
 
       defp solve_part2(data) do
-        data
+        0
       end
     end
     """
