@@ -23,11 +23,14 @@ defmodule AdventOfCode do
   end
 
   def run(year) do
-    time = 1..25 |> Enum.map(fn day ->
-      {_, time} = run(year, day)
-      time
-    end)
-    |> Enum.sum()
+    time =
+      1..25
+      |> Enum.map(fn day ->
+        {_, time} = run(year, day)
+        time
+      end)
+      |> Enum.sum()
+
     IO.puts("*** #{year} total time: #{time} µs")
   end
 

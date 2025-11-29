@@ -8,11 +8,11 @@ defmodule Year2024Day1 do
   end
 
   def parse(input) do
-    ~r/(\d+)\s+(\d+)/
-    |> Regex.scan(input)
+    {left, right} = Regex.scan(~r/(\d+)\s+(\d+)/, input)
     |> Enum.reduce({[], []}, fn [_, l, r], {lefts, rights} ->
       {[String.to_integer(l) | lefts], [String.to_integer(r) | rights]}
     end)
+    {Enum.reverse(left), Enum.reverse(right)}
   end
 
   def solve_part1({left, right}) do

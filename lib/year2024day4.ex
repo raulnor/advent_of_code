@@ -29,12 +29,20 @@ defmodule Year2024Day4 do
     rows = tuple_size(data)
     cols = tuple_size(elem(data, 0))
     {n, e, w, s} = {-1, 1, -1, 1}
+
     directions = [
-      {n,w}, {n,0}, {n,e},
-      {0,w},        {0,e},
-      {s,w}, {s,0}, {s,e},
+      {n, w},
+      {n, 0},
+      {n, e},
+      {0, w},
+      {0, e},
+      {s, w},
+      {s, 0},
+      {s, e}
     ]
+
     target = Enum.with_index([?X, ?M, ?A, ?S])
+
     Stream.flat_map(0..(rows - 1), fn row ->
       Stream.map(0..(cols - 1), fn col ->
         {row, col}
@@ -45,8 +53,9 @@ defmodule Year2024Day4 do
       Enum.filter(directions, fn {dx, dy} ->
         Enum.all?(target, fn {letter, index} ->
           case index do
-            0 -> true # checked above
-            i -> get(data, x + (i * dx), y + (i * dy)) == letter
+            # checked above
+            0 -> true
+            i -> get(data, x + i * dx, y + i * dy) == letter
           end
         end)
       end)
@@ -71,26 +80,27 @@ defmodule Year2024Day4 do
   def solve_part2(data) do
     rows = tuple_size(data)
     cols = tuple_size(elem(data, 0))
+
     patterns = [
       {
         {?M, ?., ?S},
         {?., ?A, ?.},
-        {?M, ?., ?S},
+        {?M, ?., ?S}
       },
       {
         {?M, ?., ?M},
         {?., ?A, ?.},
-        {?S, ?., ?S},
+        {?S, ?., ?S}
       },
       {
         {?S, ?., ?M},
         {?., ?A, ?.},
-        {?S, ?., ?M},
+        {?S, ?., ?M}
       },
       {
         {?S, ?., ?S},
         {?., ?A, ?.},
-        {?M, ?., ?M},
+        {?M, ?., ?M}
       }
     ]
 
