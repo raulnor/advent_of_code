@@ -4,19 +4,18 @@ defmodule Year2024Day5 do
     |> String.trim()
     |> String.split("\n")
     |> Enum.reduce({MapSet.new(), []}, fn line, {rules, updates} ->
-      cond do
-        Regex.match?(~r/\d+\|\d+/, line) ->
-          [left, right] = String.split(line, "|") |> Enum.map(&String.to_integer/1)
-          {MapSet.put(rules, {left, right}), updates}
+      case :binary.split(line, "|") do
+        [left, right] ->
+          {MapSet.put(rules, {String.to_integer(left), String.to_integer(right)}), updates}
 
-        Regex.match?(~r/\d+(,\d+)/, line) ->
-          numbers = String.split(line, ",") |> Enum.map(&String.to_integer/1)
-          {rules, updates ++ [numbers]}
-
-        true ->
-          {rules, updates}
+        [_] ->
+          case :binary.split(line, ",", [:global]) do
+            [_] -> {rules, updates}
+            nums -> {rules, [Enum.map(nums, &String.to_integer/1) | updates]}
+          end
       end
     end)
+    |> then(fn {rules, updates} -> {rules, Enum.reverse(updates)} end)
   end
 
   defp correctly_ordered?(update, rules) do
