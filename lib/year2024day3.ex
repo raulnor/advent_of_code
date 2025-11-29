@@ -1,12 +1,4 @@
 defmodule Year2024Day3 do
-  def part1(input) do
-    input |> parse() |> solve_part1()
-  end
-
-  def part2(input) do
-    input |> parse() |> solve_part2()
-  end
-
   def parse(input) do
     pattern = ~r/(mul\((\d+),(\d+)\))|(do\(\))|(don't\(\))/
 

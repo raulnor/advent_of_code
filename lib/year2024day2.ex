@@ -1,19 +1,11 @@
 defmodule Year2024Day2 do
-  def part1(input) do
-    input |> parse() |> solve_part1()
-  end
-
-  def part2(input) do
-    input |> parse() |> solve_part2()
-  end
-
   def parse(input) do
     input
     |> String.split("\n")
     |> Enum.map(fn line -> line |> String.split() |> Enum.map(&String.to_integer/1) end)
   end
 
-  def safe_level?(report) do
+  defp safe_level?(report) do
     chunks = report |> Enum.chunk_every(2, 1, :discard)
 
     all_increasing = Enum.all?(chunks, fn [a, b] -> a < b end)

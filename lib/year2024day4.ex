@@ -1,12 +1,4 @@
 defmodule Year2024Day4 do
-  def part1(input) do
-    input |> parse() |> solve_part1()
-  end
-
-  def part2(input) do
-    input |> parse() |> solve_part2()
-  end
-
   def parse(input) do
     input
     |> String.trim()
@@ -17,7 +9,7 @@ defmodule Year2024Day4 do
     |> List.to_tuple()
   end
 
-  def get(grid, row, col) do
+  defp get(grid, row, col) do
     if row >= 0 && row < tuple_size(grid) && col >= 0 && col < tuple_size(elem(grid, 0)) do
       grid |> elem(row) |> elem(col)
     else
@@ -29,18 +21,7 @@ defmodule Year2024Day4 do
     rows = tuple_size(data)
     cols = tuple_size(elem(data, 0))
     {n, e, w, s} = {-1, 1, -1, 1}
-
-    directions = [
-      {n, w},
-      {n, 0},
-      {n, e},
-      {0, w},
-      {0, e},
-      {s, w},
-      {s, 0},
-      {s, e}
-    ]
-
+    directions = [{n, w}, {n, 0}, {n, e}, {0, w}, {0, e}, {s, w}, {s, 0}, {s, e}]
     target = Enum.with_index([?X, ?M, ?A, ?S])
 
     Stream.flat_map(0..(rows - 1), fn row ->
@@ -63,7 +44,7 @@ defmodule Year2024Day4 do
     |> Enum.count()
   end
 
-  def match(grid, x, y, pattern) do
+  defp match(grid, x, y, pattern) do
     rows = tuple_size(pattern)
     cols = tuple_size(elem(pattern, 0))
 

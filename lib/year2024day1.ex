@@ -1,17 +1,11 @@
 defmodule Year2024Day1 do
-  def part1(input) do
-    input |> parse() |> solve_part1()
-  end
-
-  def part2(input) do
-    input |> parse() |> solve_part2()
-  end
-
   def parse(input) do
-    {left, right} = Regex.scan(~r/(\d+)\s+(\d+)/, input)
-    |> Enum.reduce({[], []}, fn [_, l, r], {lefts, rights} ->
-      {[String.to_integer(l) | lefts], [String.to_integer(r) | rights]}
-    end)
+    {left, right} =
+      Regex.scan(~r/(\d+)\s+(\d+)/, input)
+      |> Enum.reduce({[], []}, fn [_, l, r], {lefts, rights} ->
+        {[String.to_integer(l) | lefts], [String.to_integer(r) | rights]}
+      end)
+
     {Enum.reverse(left), Enum.reverse(right)}
   end
 
