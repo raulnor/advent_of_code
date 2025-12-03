@@ -10,4 +10,13 @@ defmodule Year2025Test do
     assert Year2025Day1.solve_part2(sample) == 6
     assert Year2025Day1.solve_part2(spinner) == 10
   end
+
+  test "2025 Day 2" do
+    sample = Year2025Day2.parse("11-22,95-115,998-1012,1188511880-1188511890,222220-222224,
+1698522-1698528,446443-446449,38593856-38593862,565653-565659,
+824824821-824824827,2121212118-2121212124")
+
+    assert Year2025Day2.solve_part1(sample) == 1_227_775_554
+    assert Year2025Day2.solve_part2(sample) == 4_174_379_265
+  end
 end
