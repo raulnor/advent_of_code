@@ -17,7 +17,10 @@ defmodule Year2024Test do
   end
 
   test "2024 Day 3" do
-    data = Year2024Day3.parse("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))")
+    data =
+      Year2024Day3.parse(
+        "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+      )
 
     assert Year2024Day3.solve_part1(data) == 161
     assert Year2024Day3.solve_part2(data) == 48
@@ -25,9 +28,18 @@ defmodule Year2024Test do
 
   test "2024 Day 4" do
     data1 = Year2024Day4.parse("..X...\n.SAMX.\n.A..A.\nXMAS.S\n.X....")
-    data2 = Year2024Day4.parse("MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX")
+
+    data2 =
+      Year2024Day4.parse(
+        "MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX"
+      )
+
     data3 = Year2024Day4.parse("M.S\n.A.\nM.S")
-    data4 = Year2024Day4.parse(".M.S......\n..A..MSMS.\n.M.S.MAA..\n..A.ASMSM.\n.M.S.M....\n..........\nS.S.S.S.S.\n.A.A.A.A..\nM.M.M.M.M.\n..........")
+
+    data4 =
+      Year2024Day4.parse(
+        ".M.S......\n..A..MSMS.\n.M.S.MAA..\n..A.ASMSM.\n.M.S.M....\n..........\nS.S.S.S.S.\n.A.A.A.A..\nM.M.M.M.M.\n.........."
+      )
 
     assert Year2024Day4.solve_part1(data1) == 4
     assert Year2024Day4.solve_part1(data2) == 18

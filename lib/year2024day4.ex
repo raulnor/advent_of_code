@@ -41,10 +41,11 @@ defmodule Year2024Day4 do
       se = get(data, row - 1, col + 1)
       nw = get(data, row + 1, col - 1)
       ne = get(data, row + 1, col + 1)
+
       (nw == ?M and ne == ?S and sw == ?M and se == ?S) or
-      (nw == ?M and ne == ?M and sw == ?S and se == ?S) or
-      (nw == ?S and ne == ?M and sw == ?S and se == ?M) or
-      (nw == ?S and ne == ?S and sw == ?M and se == ?M)
+        (nw == ?M and ne == ?M and sw == ?S and se == ?S) or
+        (nw == ?S and ne == ?M and sw == ?S and se == ?M) or
+        (nw == ?S and ne == ?S and sw == ?M and se == ?M)
     else
       false
     end
