@@ -6,6 +6,7 @@ defmodule Year2025Day3 do
   end
 
   defp select(_chars, 0, acc), do: Enum.reverse(acc)
+
   defp select(chars, n, acc) do
     max_index = length(chars) - n
 
@@ -21,13 +22,17 @@ defmodule Year2025Day3 do
 
   def solve_part1(data) do
     for bank <- data,
-        value = bank |> String.to_charlist |> select(2, []) |> List.to_integer,
-        reduce: 0 do acc -> acc + value end
+        value = bank |> String.to_charlist() |> select(2, []) |> List.to_integer(),
+        reduce: 0 do
+      acc -> acc + value
+    end
   end
 
   def solve_part2(data) do
     for bank <- data,
-        value = bank |> String.to_charlist |> select(12, []) |> List.to_integer,
-        reduce: 0 do acc -> acc + value end
+        value = bank |> String.to_charlist() |> select(12, []) |> List.to_integer(),
+        reduce: 0 do
+      acc -> acc + value
+    end
   end
 end
