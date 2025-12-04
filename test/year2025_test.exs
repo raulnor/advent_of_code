@@ -21,9 +21,20 @@ defmodule Year2025Test do
   end
 
   test "2025 Day 3" do
-    sample = Year2025Day3.parse("987654321111111\n811111111111119\n234234234234278\n818181911112111")
+    sample =
+      Year2025Day3.parse("987654321111111\n811111111111119\n234234234234278\n818181911112111")
 
     assert Year2025Day3.solve_part1(sample) == 357
-    assert Year2025Day3.solve_part2(sample) == 3121910778619
+    assert Year2025Day3.solve_part2(sample) == 3_121_910_778_619
+  end
+
+  test "2025 Day 4" do
+    sample =
+      Year2025Day4.parse(
+        "..@@.@@@@.\n@@@.@.@.@@\n@@@@@.@.@@\n@.@@@@..@.\n@@.@@@@.@@\n.@@@@@@@.@\n.@.@.@.@@@\n@.@@@.@@@@\n.@@@@@@@@.\n@.@.@@@.@."
+      )
+
+    assert Year2025Day4.solve_part1(sample) == 13
+    assert Year2025Day4.solve_part2(sample) == 43
   end
 end
