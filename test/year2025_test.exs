@@ -37,4 +37,11 @@ defmodule Year2025Test do
     assert Year2025Day4.solve_part1(sample) == 13
     assert Year2025Day4.solve_part2(sample) == 43
   end
+
+  test "2025 Day 5" do
+    sample = Year2025Day5.parse("3-5\n10-14\n16-20\n12-18\n\n1\n5\n8\n11\n17\n32")
+
+    assert Year2025Day5.solve_part1(sample) == 3
+    assert Year2025Day5.solve_part2(sample) == 14
+  end
 end
