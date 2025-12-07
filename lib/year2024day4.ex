@@ -1,8 +1,7 @@
 defmodule Year2024Day4 do
   def parse(input) do
     input
-    |> String.trim()
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
     |> Enum.map(fn line ->
       line |> String.to_charlist() |> List.to_tuple()
     end)

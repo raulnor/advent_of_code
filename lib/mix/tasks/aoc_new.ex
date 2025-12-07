@@ -16,8 +16,7 @@ defmodule Mix.Tasks.Aoc.New do
     defmodule #{module_name} do
       def parse(input) do
         input
-        |> String.trim()
-        |> String.split("\\n")
+        |> String.split("\\n", trim: true)
       end
 
       def solve_part1(data) do

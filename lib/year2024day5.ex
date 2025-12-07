@@ -1,8 +1,7 @@
 defmodule Year2024Day5 do
   def parse(input) do
     input
-    |> String.trim()
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
     |> Enum.reduce({MapSet.new(), []}, fn line, {rules, updates} ->
       case :binary.split(line, "|") do
         [left, right] ->

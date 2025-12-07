@@ -1,7 +1,7 @@
 defmodule Year2024Day2 do
   def parse(input) do
     input
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
     |> Enum.map(fn line -> line |> String.split() |> Enum.map(&String.to_integer/1) end)
   end
 

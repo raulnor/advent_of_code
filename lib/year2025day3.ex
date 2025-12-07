@@ -1,8 +1,6 @@
 defmodule Year2025Day3 do
   def parse(input) do
-    input
-    |> String.trim()
-    |> String.split("\n")
+    input |> String.split("\n", trim: true)
   end
 
   defp select(_chars, 0, acc), do: Enum.reverse(acc)

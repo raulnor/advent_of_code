@@ -4,8 +4,7 @@ defmodule Year2025Day1 do
 
   def parse(input) do
     input
-    |> String.trim()
-    |> String.split("\n")
+    |> String.split("\n", trim: true)
     |> Enum.map(&parse_line/1)
   end
 
